@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow_back"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="4dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Thống kê doanh thu"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#2D3748" />
+
+            <View
+                android:layout_width="24dp"
+                android:layout_height="24dp" />
+        </LinearLayout>
+
+        <!-- Time Range Selector -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Khoảng thời gian:"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#2D3748"
+                    android:layout_marginEnd="12dp" />
+
+                <Spinner
+                    android:id="@+id/spinner_time_range"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Metrics Cards -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:columnCount="2"
+            android:rowCount="2">
+
+            <!-- Total Revenue Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_total_revenue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                android:backgroundTint="#E6FFFA">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_money"
+                        android:tint="#38A169"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tổng doanh thu"
+                        android:textSize="12sp"
+                        android:textColor="#4A5568"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/txt_total_revenue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 đ"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#38A169" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Total Tickets Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_total_tickets"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                android:backgroundTint="#EBF8FF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_ticket"
+                        android:tint="#3182CE"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tổng vé bán"
+                        android:textSize="12sp"
+                        android:textColor="#4A5568"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/txt_total_tickets"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#3182CE" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Average Price Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_average_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                android:backgroundTint="#FFFAF0">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_average"
+                        android:tint="#D69E2E"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Giá trung bình"
+                        android:textSize="12sp"
+                        android:textColor="#4A5568"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/txt_average_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 đ"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#D69E2E" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Top Movie Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_top_movie"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                android:backgroundTint="#FAF5FF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_star"
+                        android:tint="#805AD5"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Phim bán chạy"
+                        android:textSize="12sp"
+                        android:textColor="#4A5568"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/txt_top_movie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chưa có dữ liệu"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#805AD5"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:ellipsize="end" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </GridLayout>
+
+        <!-- Daily Revenue Chart -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Doanh thu theo ngày"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#2D3748"
+                    android:layout_marginBottom="16dp" />
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/bar_chart_daily"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Trend Chart -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Xu hướng doanh thu"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#2D3748"
+                    android:layout_marginBottom="16dp" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/line_chart_trend"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Movie Distribution Chart -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phân bố doanh thu theo phim"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#2D3748"
+                    android:layout_marginBottom="16dp" />
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pie_chart_movies"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Bottom Spacing -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+    </LinearLayout>
+</ScrollView>
+

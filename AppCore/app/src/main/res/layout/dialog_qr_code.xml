@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp"
+    android:layout_margin="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Mã QR Vé Xem Phim"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#2D3748"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/dialog_close_btn"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:text="✕"
+                android:textSize="16sp"
+                android:textColor="#718096"
+                android:gravity="center"
+                android:background="@drawable/circle_close_background"
+                android:clickable="true"
+                android:focusable="true" />
+        </LinearLayout>
+
+        <!-- QR Code Image -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="20dp">
+
+            <ImageView
+                android:id="@+id/dialog_qr_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/qr_movie_ticket"
+                android:scaleType="centerCrop"
+                android:padding="16dp" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Movie Information -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="#F7FAFC"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/movie_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Avengers: Endgame"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#2D3748"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/movie_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CGV Vincom"
+                android:textSize="16sp"
+                android:textColor="#4A5568"
+                android:layout_marginBottom="4dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/seat_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ghế: A12"
+                    android:textSize="14sp"
+                    android:textColor="#4A5568"
+                    android:layout_marginEnd="16dp" />
+
+                <TextView
+                    android:id="@+id/showtime_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="19:30 - 22:00 | 25/07/2025"
+                    android:textSize="14sp"
+                    android:textColor="#4A5568" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Instructions -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vui lòng xuất trình mã QR này tại quầy vé để vào rạp"
+            android:textSize="12sp"
+            android:textColor="#718096"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mã QR có hiệu lực đến 22:30 ngày 25/07/2025"
+            android:textSize="10sp"
+            android:textColor="#A0AEC0"
+            android:gravity="center" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCore"
+        tools:targetApi="31">
+        <activity
+            android:name=".ui.home.FragmentContainerViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.EditShowtimeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.AddShowtimeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.AdminShowtimeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.EditRoomActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.AddRoomActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.AdminRoomActivity"
+            android:exported="false" />
+        <activity android:name=".ui.activities.UpdateProfileActivity" />
+        <activity
+            android:name=".ui.activities.admin.AddCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.CategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.BaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.AdminStaticActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.StatisticRevenueActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.MovieAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.chatbox.ChatboxActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TransactionHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatbotActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.movie_details.MovieDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.forgotpassword.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.register.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.login.LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- <activity -->
+        <!-- android:name=".ui.activities.admin.AdminRoomActivity" -->
+        <!-- android:exported="true"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <activity
+            android:name=".ui.activities.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.onboarding.OnboardingActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

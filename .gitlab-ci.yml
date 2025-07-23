@@ -1,0 +1,104 @@
+# image android
+image: ubuntu:22.04
+
+# ENV
+variables:
+  ANDROID_COMPILE_SDK: "33"
+  ANDROID_BUILD_TOOLS: "33.0.0"
+  ANDROID_SDK_TOOLS: "8512546"
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
+# Cache
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - AppCore/.gradle/wrapper
+    - AppCore/.gradle/caches
+    - AppCore/.gradle/daemon
+
+before_script:
+  - apt-get update && apt-get install -y openjdk-17-jdk wget tar unzip lib32stdc++6 lib32z1
+  - java -version
+
+# Stages
+stages:
+  - build
+  # - test
+  - deploy
+
+# Job build
+build:
+  stage: build
+  script:
+    - wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_TOOLS}_latest.zip
+    - unzip -q android-sdk.zip -d android-sdk
+    - export ANDROID_HOME="$PWD/android-sdk"
+    - export PATH="$PATH:$ANDROID_HOME/cmdline-tools/bin"
+    - yes | sdkmanager --sdk_root=${ANDROID_HOME} --licenses || true
+    - sdkmanager --sdk_root=${ANDROID_HOME} "platform-tools" "platforms;android-${ANDROID_COMPILE_SDK}" "build-tools;${ANDROID_BUILD_TOOLS}"
+
+
+    # Giải mã file google-services.json
+    - mkdir -p AppCore/app
+    - echo "$GOOGLE_SERVICES_JSON_BASE64" | base64 -d > AppCore/app/google-services.json
+    - ls -la AppCore/app  # Kiểm tra xem file đã tồn tại chưa
+
+    - cd AppCore
+    - chmod +x ./gradlew
+    - ./gradlew assembleDebug
+  artifacts:
+    paths:
+      - AppCore/app/build/outputs/apk/debug/
+    expire_in: 1 week
+    when: on_success
+
+# Job test
+# unit_test:
+#   stage: test
+#   script:
+#     - wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_TOOLS}_latest.zip
+#     - unzip -q android-sdk.zip -d android-sdk
+#     - export ANDROID_HOME="$PWD/android-sdk"
+#     - export PATH="$PATH:$ANDROID_HOME/cmdline-tools/bin"
+#     - yes | sdkmanager --sdk_root=${ANDROID_HOME} --licenses || true
+#     - sdkmanager --sdk_root=${ANDROID_HOME} "platform-tools" "platforms;android-${ANDROID_COMPILE_SDK}" "build-tools;${ANDROID_BUILD_TOOLS}"
+#      # Giải mã file google-services.json
+#     - mkdir -p AppCore/app
+#     - echo "$GOOGLE_SERVICES_JSON_BASE64" | base64 -d > AppCore/app/google-services.json
+#
+#     - cd AppCore
+#     - chmod +x ./gradlew
+#     - ./gradlew testDebugUnitTest
+#   dependencies: []
+
+# Job deploy
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying to GitLab Package Registry..."
+    
+    # Giải mã file google-services.json
+    - mkdir -p AppCore/app
+    - echo "$GOOGLE_SERVICES_JSON_BASE64" | base64 -d > AppCore/app/google-services.json
+
+    - cd AppCore
+    - chmod +x ./gradlew
+    - ./gradlew assembleRelease
+    - echo "APK file is ready!"
+  artifacts:
+    paths:
+      - AppCore/app/build/outputs/apk/release/app-release-unsigned.apk
+    expire_in: 1 week
+  only:
+    - tags
+
+# deploy_firebase:
+#   stage: deploy
+#   script:
+#     - echo "Deploying to Firebase App Distribution..."
+#     - cd AppCore
+#     - chmod +x ./gradlew
+#     - ./gradlew assembleRelease appDistributionUploadRelease
+#   only:
+#     - main
+#   when: manual

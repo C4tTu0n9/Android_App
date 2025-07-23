@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.activities.admin.EditShowtimeActivity">
+
+    <!-- Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:title="Cập nhật suất chiếu"
+            app:titleTextColor="@android:color/white" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- TextView: Chọn phim -->
+    <TextView
+        android:id="@+id/tvSelectMovie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chọn phim:"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp" />
+
+    <!-- Spinner: chọn phim -->
+    <Spinner
+        android:id="@+id/spinnerMovie"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_edittext"
+        app:layout_constraintTop_toBottomOf="@id/tvSelectMovie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:layout_marginHorizontal="20dp" />
+
+    <!-- TextView: Chọn phòng -->
+    <TextView
+        android:id="@+id/tvSelectRoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chọn phòng:"
+        app:layout_constraintTop_toBottomOf="@id/spinnerMovie"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp" />
+
+    <!-- Spinner: chọn phòng -->
+    <Spinner
+        android:id="@+id/spinnerRoom"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_edittext"
+        app:layout_constraintTop_toBottomOf="@id/tvSelectRoom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:layout_marginHorizontal="20dp" />
+
+    <!-- TextView: Ngày chiếu -->
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ngày chiếu:"
+        app:layout_constraintTop_toBottomOf="@id/spinnerRoom"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp" />
+
+    <!-- Layout ngày & giờ -->
+    <LinearLayout
+        android:id="@+id/layoutDateTime"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tvDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:layout_marginHorizontal="20dp">
+
+        <EditText
+            android:id="@+id/edtDate"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="dd-mm-yyyy"
+            android:focusable="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:background="@drawable/bg_edittext" />
+
+        <View
+            android:layout_width="16dp"
+            android:layout_height="match_parent" />
+
+        <EditText
+            android:id="@+id/edtTime"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="hh:mm"
+            android:focusable="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:background="@drawable/bg_edittext" />
+    </LinearLayout>
+
+
+
+    <!-- Button: Cập nhật -->
+    <Button
+        android:id="@+id/btnUpdateShowtime"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Cập nhật"
+        app:layout_constraintTop_toBottomOf="@id/layoutDateTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

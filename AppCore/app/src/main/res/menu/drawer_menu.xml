@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_quan_ly_suat_chieu"
+            android:icon="@drawable/ic_suatchieu"
+            android:title="Quản lý suất chiếu"/>
+        <item
+            android:id="@+id/nav_quan_ly_the_loai"
+            android:title="Quản lý thể loại phim"
+            android:icon="@drawable/ic_theloaiphim" />
+        <item
+            android:id="@+id/nav_quan_ly_phim"
+            android:icon="@drawable/ic_category"
+            android:title="Quản lý Phim" />
+        <item
+            android:id="@+id/nav_quan_ly_phong"
+            android:icon="@drawable/ic_category"
+            android:title="Quản lý Phòng" />
+
+    </group>
+
+    <item android:title="Tiện ích">
+        <menu>
+            <item
+                android:id="@+id/nav_thong_ke_doanh_thu"
+                android:title="Doanh thu"
+                android:icon="@drawable/ic_doanhthu"/>
+            <item
+                android:id="@+id/nav_dang_xuat"
+                android:title="Đăng xuất"
+                android:icon="@drawable/ic_logout"/>
+        </menu>
+    </item>
+</menu>

@@ -1,0 +1,1 @@
+# Dependency Injection (ví dụ: Dagger Hilt) - Giúp quản lý các đối tượng

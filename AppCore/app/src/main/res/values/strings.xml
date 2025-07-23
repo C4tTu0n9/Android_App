@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">AppCore</string>
+    <string name="navigation_drawer_open">Mở menu điều hướng</string>
+    <string name="navigation_drawer_close">Đóng menu điều hướng</string>
+    <string name="category_list_description">Danh sách các thể loại phim</string>
+    <string name="movie_list_description">Danh sách các thể loại phim</string>
+    <string name="room_list_description">Danh sách phòng chiếu</string>
+    <string name="showtime_list_description">Danh sách suất chiếu</string>
+
+
+    <string-array name="room_types">
+        <item>Phòng chiếu thường</item> <!-- index = 0 -->
+        <item>Phòng chiếu 3D</item>     <!-- index = 1 -->
+        <item>Phòng chiếu VIP</item>    <!-- index = 2 -->
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

@@ -8,4 +8,8 @@
     <color name="grey">#989797</color>
     <color name="purple_500">#6200EE</color>
     <color name="blue_app">#1976D2</color>
+    <color name="dark_grey">#2C2C2C</color>
+    <color name="seat_available">#4CAF50</color>
+    <color name="seat_selected">#FF9800</color>
+    <color name="seat_unavailable">#F44336</color>
 </resources>

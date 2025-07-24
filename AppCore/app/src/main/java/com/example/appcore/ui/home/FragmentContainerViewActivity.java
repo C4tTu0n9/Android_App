@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.appcore.R;
+import com.example.appcore.ui.activities.profile.ProfileFragment;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 public class FragmentContainerViewActivity extends AppCompatActivity {
@@ -39,6 +40,9 @@ public class FragmentContainerViewActivity extends AppCompatActivity {
 
                 if (id == R.id.home) { // Thay 'home' bằng id thực tế trong menu của bạn
                     selectedFragment = new HomeFragment();
+                } else if (id == R.id.nav_profile) {
+                    selectedFragment = new ProfileFragment();
+
                 }
                 else if (id == R.id.chat) {
                     // Khởi chạy ChatboxActivity

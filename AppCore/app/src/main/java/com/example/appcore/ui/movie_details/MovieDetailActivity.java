@@ -59,8 +59,10 @@ public class MovieDetailActivity extends AppCompatActivity {
         backButton.setOnClickListener(v -> finish()); // Nhấn nút back để quay lại màn hình trước
 
         buyTicketButton.setOnClickListener(v -> {
-            // Xử lý logic khi nhấn nút "Buy Ticket"
-            Toast.makeText(this, "Chuyển đến màn hình đặt vé...", Toast.LENGTH_SHORT).show();
+            // Chuyển đến màn hình chọn ghế
+            Intent intent = new Intent(MovieDetailActivity.this, com.example.appcore.ui.activities.SeatListActivity.class);
+            intent.putExtra("MOVIE_ID", currentMovieId);
+            startActivity(intent);
         });
     }
 

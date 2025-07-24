@@ -41,10 +41,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-
-public class AdminStaticActivity extends AppCompatActivity {
+import com.example.appcore.ui.activities.admin.BaseActivity;
+public class AdminStaticActivity extends BaseActivity {
     private static final String TAG = "AdminStaticActivity";
-    
+
     // UI Components
     private ImageView btnBack;
     private Spinner spinnerTimeRange;
@@ -54,13 +54,13 @@ public class AdminStaticActivity extends AppCompatActivity {
     private LineChart lineChartTrend;
     private PieChart pieChartMovies;
     private ProgressBar progressLoading;
-    
+
     // Data
     private TransactionHistoryDAO transactionDAO;
     private List<TransactionHistory> allTransactions;
     private NumberFormat currencyFormat;
     private SimpleDateFormat dateFormat;
-    
+
     // Configuration
     private String[] timeRanges = {"7 ngày qua", "30 ngày qua", "3 tháng qua", "6 tháng qua", "1 năm qua"};
     private int selectedTimeRange = 1; // Default: 30 ngày qua
@@ -68,7 +68,12 @@ public class AdminStaticActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_static);
+        getLayoutInflater().inflate(R.layout.activity_admin_static, findViewById(R.id.content_frame));
+
+        // Đặt tiêu đề cho Toolbar (có thể truy cập vì nó từ BaseActivity)
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Thống Kê Doanh Thu");
+        }
 
         initViews();
         initData();
@@ -81,18 +86,18 @@ public class AdminStaticActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btn_back);
         spinnerTimeRange = findViewById(R.id.spinner_time_range);
         progressLoading = findViewById(R.id.progress_loading);
-        
+
         // Summary cards
         txtTotalRevenue = findViewById(R.id.txt_total_revenue);
         txtTotalTickets = findViewById(R.id.txt_total_tickets);
         txtAveragePrice = findViewById(R.id.txt_average_price);
         txtTopMovie = findViewById(R.id.txt_top_movie);
-        
+
         cardTotalRevenue = findViewById(R.id.card_total_revenue);
         cardTotalTickets = findViewById(R.id.card_total_tickets);
         cardAveragePrice = findViewById(R.id.card_average_price);
         cardTopMovie = findViewById(R.id.card_top_movie);
-        
+
         // Charts
         barChartDaily = findViewById(R.id.bar_chart_daily);
         lineChartTrend = findViewById(R.id.line_chart_trend);
@@ -108,7 +113,7 @@ public class AdminStaticActivity extends AppCompatActivity {
 
     private void setupClickListeners() {
         btnBack.setOnClickListener(v -> finish());
-        
+
         // Add click listeners for cards to show detailed views
         cardTotalRevenue.setOnClickListener(v -> showRevenueDetails());
         cardTotalTickets.setOnClickListener(v -> showTicketDetails());
@@ -117,12 +122,12 @@ public class AdminStaticActivity extends AppCompatActivity {
     }
 
     private void setupSpinner() {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, 
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
             android.R.layout.simple_spinner_item, timeRanges);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTimeRange.setAdapter(adapter);
         spinnerTimeRange.setSelection(selectedTimeRange);
-        
+
         spinnerTimeRange.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -139,11 +144,11 @@ public class AdminStaticActivity extends AppCompatActivity {
 
     private void loadStatistics() {
         showLoading(true);
-        
+
         // Calculate time range
         Calendar calendar = Calendar.getInstance();
         long endTime = calendar.getTimeInMillis();
-        
+
         switch (selectedTimeRange) {
             case 0: // 7 ngày qua
                 calendar.add(Calendar.DAY_OF_YEAR, -7);
@@ -179,8 +184,8 @@ public class AdminStaticActivity extends AppCompatActivity {
             public void onFailure(String error) {
                 runOnUiThread(() -> {
                     Log.e(TAG, "Error loading statistics: " + error);
-                    Toast.makeText(AdminStaticActivity.this, 
-                                 "Lỗi tải thống kê: " + error, 
+                    Toast.makeText(AdminStaticActivity.this,
+                                 "Lỗi tải thống kê: " + error,
                                  Toast.LENGTH_SHORT).show();
                     showLoading(false);
                 });
@@ -209,7 +214,7 @@ public class AdminStaticActivity extends AppCompatActivity {
 
         for (TransactionHistory transaction : allTransactions) {
             totalRevenue += transaction.getTotalPrice();
-            
+
             String movieName = transaction.getMovieName();
             movieCounts.put(movieName, movieCounts.getOrDefault(movieName, 0) + 1);
             movieRevenues.put(movieName, movieRevenues.getOrDefault(movieName, 0L) + transaction.getTotalPrice());
@@ -218,7 +223,7 @@ public class AdminStaticActivity extends AppCompatActivity {
         // Update UI
         txtTotalRevenue.setText(formatCurrency(totalRevenue));
         txtTotalTickets.setText(String.valueOf(totalTickets));
-        
+
         long averagePrice = totalTickets > 0 ? totalRevenue / totalTickets : 0;
         txtAveragePrice.setText(formatCurrency(averagePrice));
 
@@ -242,7 +247,7 @@ public class AdminStaticActivity extends AppCompatActivity {
 
     private void updateDailyRevenueChart() {
         Map<String, Long> dailyRevenue = new HashMap<>();
-        
+
         for (TransactionHistory transaction : allTransactions) {
             String date = dateFormat.format(new Date(transaction.getTimestamp()));
             dailyRevenue.put(date, dailyRevenue.getOrDefault(date, 0L) + transaction.getTotalPrice());
@@ -251,7 +256,7 @@ public class AdminStaticActivity extends AppCompatActivity {
         List<BarEntry> entries = new ArrayList<>();
         List<String> labels = new ArrayList<>();
         int index = 0;
-        
+
         for (Map.Entry<String, Long> entry : dailyRevenue.entrySet()) {
             entries.add(new BarEntry(index, entry.getValue()));
             labels.add(entry.getKey());
@@ -270,18 +275,18 @@ public class AdminStaticActivity extends AppCompatActivity {
 
         BarData barData = new BarData(dataSet);
         barChartDaily.setData(barData);
-        
+
         // Customize chart
         barChartDaily.getDescription().setEnabled(false);
         barChartDaily.setDrawGridBackground(false);
         barChartDaily.getAxisRight().setEnabled(false);
         barChartDaily.getLegend().setEnabled(false);
-        
+
         XAxis xAxis = barChartDaily.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IndexAxisValueFormatter(labels));
         xAxis.setGranularity(1f);
-        
+
         barChartDaily.invalidate();
     }
 
@@ -289,7 +294,7 @@ public class AdminStaticActivity extends AppCompatActivity {
         // Group by week for trend analysis
         Map<String, Long> weeklyRevenue = new HashMap<>();
         SimpleDateFormat weekFormat = new SimpleDateFormat("ww/yyyy", Locale.getDefault());
-        
+
         for (TransactionHistory transaction : allTransactions) {
             String week = weekFormat.format(new Date(transaction.getTimestamp()));
             weeklyRevenue.put(week, weeklyRevenue.getOrDefault(week, 0L) + transaction.getTotalPrice());
@@ -298,7 +303,7 @@ public class AdminStaticActivity extends AppCompatActivity {
         List<Entry> entries = new ArrayList<>();
         List<String> labels = new ArrayList<>();
         int index = 0;
-        
+
         for (Map.Entry<String, Long> entry : weeklyRevenue.entrySet()) {
             entries.add(new Entry(index, entry.getValue()));
             labels.add(entry.getKey());
@@ -320,24 +325,24 @@ public class AdminStaticActivity extends AppCompatActivity {
 
         LineData lineData = new LineData(dataSet);
         lineChartTrend.setData(lineData);
-        
+
         // Customize chart
         lineChartTrend.getDescription().setEnabled(false);
         lineChartTrend.setDrawGridBackground(false);
         lineChartTrend.getAxisRight().setEnabled(false);
         lineChartTrend.getLegend().setEnabled(false);
-        
+
         XAxis xAxis = lineChartTrend.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IndexAxisValueFormatter(labels));
         xAxis.setGranularity(1f);
-        
+
         lineChartTrend.invalidate();
     }
 
     private void updateMovieDistributionChart() {
         Map<String, Long> movieRevenues = new HashMap<>();
-        
+
         for (TransactionHistory transaction : allTransactions) {
             String movieName = transaction.getMovieName();
             movieRevenues.put(movieName, movieRevenues.getOrDefault(movieName, 0L) + transaction.getTotalPrice());
@@ -352,7 +357,7 @@ public class AdminStaticActivity extends AppCompatActivity {
             Color.parseColor("#805AD5"),
             Color.parseColor("#DD6B20")
         };
-        
+
         for (Map.Entry<String, Long> entry : movieRevenues.entrySet()) {
             entries.add(new PieEntry(entry.getValue(), entry.getKey()));
         }
@@ -369,7 +374,7 @@ public class AdminStaticActivity extends AppCompatActivity {
 
         PieData pieData = new PieData(dataSet);
         pieChartMovies.setData(pieData);
-        
+
         // Customize chart
         pieChartMovies.getDescription().setEnabled(false);
         pieChartMovies.setDrawHoleEnabled(true);
@@ -379,7 +384,7 @@ public class AdminStaticActivity extends AppCompatActivity {
         pieChartMovies.setCenterText("Phân bố\nDoanh thu");
         pieChartMovies.setCenterTextSize(14f);
         pieChartMovies.getLegend().setEnabled(true);
-        
+
         pieChartMovies.invalidate();
     }
 

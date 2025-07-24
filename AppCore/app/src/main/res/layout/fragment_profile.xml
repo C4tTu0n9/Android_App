@@ -11,7 +11,8 @@
     <!-- Profile Section -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
         android:orientation="vertical"
         android:padding="16dp">
 
@@ -25,28 +26,28 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/img_avatar"
                 android:layout_marginBottom="8dp"
-                android:contentDescription="Profile Image" />
-
+                android:contentDescription="Profile Image"
+                android:src="@drawable/profile" />
 
 
             <TextView
                 android:id="@+id/txt_ten_TCN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="Quyền nè"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginTop="8dp" />
+                android:textStyle="bold" />
         </LinearLayout>
 
         <!-- Name, Phone, Email Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
 
             <!-- Email Section -->
             <LinearLayout
@@ -59,23 +60,24 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="Email"
-                    android:textSize="16sp"
-                    android:textColor="#757575"
-                    android:layout_marginTop="8dp"/>
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
 
                 <TextView
                     android:id="@+id/txt_email_TCN"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="limnguyen243@gmail.com"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:maxLines="1"
                     android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
                     android:paddingHorizontal="8dp"
-                    android:gravity="center" />
+                    android:text="limnguyen243@gmail.com"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <!-- Phone Section -->
@@ -89,10 +91,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="Số điện thoại"
-                    android:textSize="16sp"
-                    android:textColor="#757575"
-                    android:layout_marginTop="8dp"/>
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
 
                 <TextView
@@ -100,9 +102,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="09020000304"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -113,16 +117,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="Số điện thoại"
-                    android:textSize="16sp"
-                    android:textColor="#757575"
-                    android:layout_marginTop="8dp"/>
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/txt_Dia_Chi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ha Noi"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -134,8 +139,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:padding="8dp"
             android:columnCount="2"
+            android:padding="8dp"
             android:rowCount="1">
 
             <!-- Item 1: Hóa đơn -->
@@ -144,28 +149,29 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="#C1D2D2ED"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
 
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
+                    android:padding="10dp"
                     android:src="@drawable/ic_invoice"
-                    android:padding="10dp" />
+                    app:tint="#FFFFFF" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cập nhật thông tin"
-                    android:textSize="16sp"
-                    android:textColor="#757575"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:layout_marginTop="10dp" />
+                    android:text="Cập nhật thông tin"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <!-- Item 2: Đổi mật khẩu -->
@@ -174,28 +180,28 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="8dp"
                 android:layout_marginStart="8dp"
                 android:background="#C1D2D2ED"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
 
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:src="@drawable/ic_pass"
-                     />
+                    app:tint="#FFFFFF" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Đổi mật khẩu"
-                    android:textSize="16sp"
-                    android:textColor="#757575"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:layout_marginTop="10dp" />
+                    android:text="Đổi mật khẩu"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
             </LinearLayout>
 
 
@@ -204,29 +210,30 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="#C1D2D2ED"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
 
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
+                    android:padding="10dp"
                     android:src="@drawable/ic_history"
-                    android:padding="10dp" />
+                    app:tint="#FFFFFF" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lịch sử giao dịch"
-                    android:textSize="16sp"
-                    android:textColor="#757575"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:layout_marginTop="10dp" />
+                    android:text="Lịch sử giao dịch"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -234,53 +241,54 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:layout_marginTop="8dp"
-                android:padding="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:background="#C1D2D2ED"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
 
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:src="@drawable/ic_deleteuser"
-                     />
+                    app:tint="#FFFFFF" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Xoá tài khoản"
-                    android:textSize="16sp"
-                    android:textColor="#757575"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:layout_marginTop="10dp" />
+                    android:text="Xoá tài khoản"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
             </LinearLayout>
         </GridLayout>
+
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:padding="8dp"
             android:columnCount="2"
+            android:padding="8dp"
             android:rowCount="1">
 
 
         </GridLayout>
 
         <!-- Logout Button -->
-<!--        <Button-->
-<!--            android:id="@+id/btn_DangXuat"-->
-<!--            android:layout_width="300dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginTop="100dp"-->
-<!--            android:backgroundTint="@color/orange"-->
-<!--            android:text="Đăng Xuất"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="19sp" />-->
+        <!--        <Button-->
+        <!--            android:id="@+id/btn_DangXuat"-->
+        <!--            android:layout_width="300dp"-->
+        <!--            android:layout_height="50dp"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:layout_marginTop="100dp"-->
+        <!--            android:backgroundTint="@color/orange"-->
+        <!--            android:text="Đăng Xuất"-->
+        <!--            android:textColor="@color/black"-->
+        <!--            android:textSize="19sp" />-->
 
 
     </LinearLayout>

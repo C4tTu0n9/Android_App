@@ -13,6 +13,16 @@
         <item>Phòng chiếu 3D</item>     <!-- index = 1 -->
         <item>Phòng chiếu VIP</item>    <!-- index = 2 -->
     </string-array>
+    
+    <!-- Seat Selection Strings -->
+    <string name="seat_selection_title">Chọn ghế</string>
+    <string name="available_seats">Ghế trống</string>
+    <string name="selected_seats">Ghế đã chọn</string>
+    <string name="unavailable_seats">Ghế đã đặt</string>
+    <string name="book_tickets">Đặt vé</string>
+    <string name="select_date">Chọn ngày</string>
+    <string name="select_time">Chọn giờ</string>
+    
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
